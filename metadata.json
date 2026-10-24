@@ -1,0 +1,6 @@
+{
+  "name": "Velvet & Churn Artisanal Ice Creams",
+  "description": "Hand-churned artisanal ice cream parlour featuring small-batch seasonal scoops, interactive custom sundae builder, flavor quiz, and dry-ice cold delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

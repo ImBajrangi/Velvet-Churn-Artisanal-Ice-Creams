@@ -1,0 +1,359 @@
+/* ==========================================================================
+   ZeroCode Techfest, IIT Bombay — Global Design System & Component Styling
+   ========================================================================== */
+
+:root {
+  --color-carbon: #070a12;
+  --color-carbon-light: #0d1322;
+  --color-surface: #111a2e;
+  --color-surface-hover: #16223b;
+  --color-cyan: #00f2fe;
+  --color-cyan-glow: rgba(0, 242, 254, 0.35);
+  --color-amber: #f59e0b;
+  --color-emerald: #10b981;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(0, 242, 254, 0.3);
+
+  --font-display: "Syne", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Base Resets & Global Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  background-color: var(--color-carbon);
+  color: #f1f5f9;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-carbon);
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Neutral Surfaces & Colors */
+.bg-carbon {
+  background-color: var(--color-carbon);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070a12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Custom Cursor */
+#custom-cursor {
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* Ambient Canvas */
+#bg-canvas {
+  will-change: transform;
+}
+
+/* Header & Navigation Styles */
+header#site-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 1.5px;
+  background-color: var(--color-cyan);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Bento Card Styling */
+.bento-card {
+  position: relative;
+  background-color: rgba(15, 23, 42, 0.45);
+  border: 1px solid var(--color-border);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.bento-card:hover {
+  border-color: var(--color-border-hover);
+  transform: translateY(-2px);
+}
+
+/* SVG Pipeline Animated Dashes & Energy Streams */
+@keyframes dashPulse {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.pulse-beam {
+  animation: dashPulse 2s linear infinite;
+}
+
+/* Circuit Rays Pulse Animation */
+@keyframes circuitPulse {
+  0%, 100% {
+    stroke-opacity: 0.15;
+  }
+  50% {
+    stroke-opacity: 0.6;
+  }
+}
+
+#circuit-rays line {
+  animation: circuitPulse 3.5s ease-in-out infinite;
+}
+
+#circuit-rays line:nth-child(2) {
+  animation-delay: 0.5s;
+}
+#circuit-rays line:nth-child(3) {
+  animation-delay: 1s;
+}
+#circuit-rays line:nth-child(4) {
+  animation-delay: 1.5s;
+}
+#circuit-rays line:nth-child(5) {
+  animation-delay: 2s;
+}
+
+/* Pipeline Node Hover Effects */
+.pipeline-interactive-node {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.pipeline-interactive-node:hover {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.3));
+}
+
+/* Zonal Interactive Map Nodes */
+.zonal-node {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zonal-node:hover {
+  transform: scale(1.15);
+}
+
+.zonal-node.active-hub circle:first-child {
+  transform-origin: center;
+}
+
+/* Architecture Tab Button Styling */
+.arch-tab-btn {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  cursor: pointer;
+}
+
+.arch-tab-btn.active {
+  background-color: var(--color-cyan);
+  color: var(--color-carbon);
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+/* Code Inspector Tab Styling */
+.code-file-tab {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.code-file-tab.active {
+  background-color: #1e293b;
+  color: var(--color-cyan);
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-cyan);
+}
+
+/* Range Slider Styling */
+#prompt-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #1e293b;
+  outline: none;
+  transition: background 0.2s;
+}
+
+#prompt-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--color-cyan);
+  border: 2px solid #ffffff;
+  transition: transform 0.15s ease;
+}
+
+#prompt-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+#prompt-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--color-cyan);
+  border: 2px solid #ffffff;
+  transition: transform 0.15s ease;
+}
+
+/* Interactive Accordion Transitions */
+.rule-item {
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.rule-item:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.rule-arrow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rule-item.open .rule-arrow {
+  transform: rotate(45deg);
+  color: var(--color-cyan);
+}
+
+.rule-item.open .rule-toggle-btn {
+  color: var(--color-cyan);
+}
+
+/* Modal Animations */
+#register-modal:not(.hidden) {
+  animation: fadeInModal 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility Animations */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* Google Keep Drawer Styling */
+#keep-drawer.open {
+  transform: translateX(0);
+}
+
+.keep-color-dot.active {
+  ring: 2px solid #ffffff;
+  transform: scale(1.2);
+}
+
+/* Keep Note Card Themes */
+.keep-note-card {
+  border-radius: 0.75rem;
+  padding: 0.875rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.keep-note-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.keep-note-slate {
+  background-color: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.keep-note-amber {
+  background-color: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.keep-note-cyan {
+  background-color: rgba(0, 242, 254, 0.1);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+.keep-note-emerald {
+  background-color: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.keep-note-purple {
+  background-color: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
